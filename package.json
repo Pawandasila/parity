@@ -12,6 +12,8 @@
     "dist",
     "bin",
     "docs",
+    "templates",
+    "schemas",
     "README.md"
   ],
   "scripts": {
