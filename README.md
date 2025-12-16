@@ -57,8 +57,7 @@ Add to your `package.json` scripts:
 
 The `.env.lock` file allows you to define strict rules for your project.
 
-> [!IMPORTANT]
-> **Syntax Warning:** Use **YAML** syntax (`key: value`), NOT `.env` syntax (`KEY=VALUE`).
+> [!IMPORTANT] > **Syntax Warning:** Use **YAML** syntax (`key: value`), NOT `.env` syntax (`KEY=VALUE`).
 
 ### Example Configuration
 
@@ -145,7 +144,3 @@ Use the `--ci` flag to treat warnings as errors.
 ## 🤝 Contributing & Support
 
 Found a bug? [Open an issue](https://github.com/Pawandasila/parity-cli/issues).
-
-<div align="center">
-  <sub>Made with ❤️ by developers, for developers</sub>
-</div>
