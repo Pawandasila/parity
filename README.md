@@ -10,22 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Downloads](https://img.shields.io/npm/dm/parity-ci.svg?style=flat-square)](https://www.npmjs.com/package/parity-ci)
 
-[Installation](#-installation) • [Quick Start](#-quick-start) • [Features](#-features) • [Documentation](#-documentation) • [CI/CD](#-cicd-integration)
-
-</div>
-
----
-
-## 🎯 What is Parity?
-
-**Parity** is a zero-config developer experience tool that ensures every engineer on your team—and your CI pipeline—runs the exact same environment configuration. Say goodbye to:
-
-- ❌ Runtime version mismatches
-- ❌ Missing `.env` variables
-- ❌ Package manager conflicts
-- ❌ "Works on my machine" bugs
-
-<div align="center">
+**[Installation](#-installation) • [Quick Start](#-quick-start) • [Features](#-features) • [Configuration](#%EF%B8%8F-configuration) • [CI/CD](#-cicd-integration) • [Documentation](#-documentation)**
 
 ![Parity Check Success](./assests/pass_check.png)
 
@@ -33,32 +18,61 @@
 
 ---
 
-## 📦 Installation
+## 🎯 What is Parity?
 
-Choose your preferred package manager:
+**Parity** is a zero-config developer experience tool that ensures every engineer on your team—and your CI pipeline—runs the exact same environment configuration.
 
 <table>
 <tr>
-<td> <b>npm</b> </td>
-<td> <b>pnpm</b> </td>
-<td> <b>bun</b> </td>
+<td width="50%">
+
+### ✅ With Parity
+
+- ✓ Consistent environments
+- ✓ Caught issues early
+- ✓ Fast onboarding
+- ✓ CI/CD reliability
+
+</td>
+<td width="50%">
+
+### ❌ Without Parity
+
+- ✗ Runtime version mismatches
+- ✗ Missing `.env` variables
+- ✗ Package manager conflicts
+- ✗ "Works on my machine" bugs
+
+</td>
 </tr>
+</table>
+
+---
+
+## 📦 Installation
+
+> **Choose your preferred package manager:**
+
+<table>
 <tr>
-<td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/npm-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white" alt="npm"/>
 
 ```bash
 npm install -D parity-ci
 ```
 
 </td>
-<td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220" alt="pnpm"/>
 
 ```bash
 pnpm add -D parity-ci
 ```
 
 </td>
-<td>
+<td align="center" width="33%">
+<img src="https://img.shields.io/badge/bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white" alt="bun"/>
 
 ```bash
 bun add -d parity-ci
@@ -72,7 +86,9 @@ bun add -d parity-ci
 
 ## 🚀 Quick Start
 
-### Step 1: Initialize Configuration
+> **Get up and running in 3 simple steps**
+
+### **Step 1️⃣ Initialize Configuration**
 
 Generate a `.env.lock` file based on your current environment:
 
@@ -81,13 +97,14 @@ npx parity init
 ```
 
 <details>
-<summary>📸 See what it looks like</summary>
+<summary>📸 <b>See what it looks like</b></summary>
+<br>
 
 ![Init Command](./assests/init.png)
 
 </details>
 
-### Step 2: Add to Your Workflow
+### **Step 2️⃣ Add to Your Workflow**
 
 Integrate Parity checks into your `package.json` scripts:
 
@@ -101,7 +118,9 @@ Integrate Parity checks into your `package.json` scripts:
 }
 ```
 
-### Step 3: Commit & Share
+> **💡 Tip:** Using `postinstall` ensures checks run automatically after dependencies are installed.
+
+### **Step 3️⃣ Commit & Share**
 
 ```bash
 git add .env.lock
@@ -109,36 +128,75 @@ git commit -m "Add Parity configuration"
 git push
 ```
 
-Now every team member and CI run will validate against the same environment! 🎉
+<div align="center">
+
+🎉 **Done!** Now every team member and CI run will validate against the same environment.
+
+</div>
 
 ---
 
 ## ⚡ Features
 
+<div align="center">
+
+| Feature                    | Description                                           |
+| -------------------------- | ----------------------------------------------------- |
+| 🔧 **Runtime Enforcement** | Lock Node/Bun versions with SemVer support            |
+| 📦 **Package Manager**     | Prevent mixed npm/pnpm/yarn/bun usage                 |
+| 🖥️ **Cross-Platform**      | Ensure OS compatibility across environments           |
+| 🔐 **Env Validation**      | Validate required environment variables               |
+| 📂 **Multiple Env Files**  | Load from multiple `.env` files with override support |
+| 🆘 **Helpful CLI**         | Built-in help and clear error messages                |
+
+</div>
+
+---
+
 ### 🔧 Runtime & Version Enforcement
 
 Ensure everyone uses the same Node/Bun version with support for strict versions or SemVer ranges.
 
+<table>
+<tr>
+<td width="33%">
+
+**✅ Success**
+
 <details>
-<summary>✅ Success with SemVer Range</summary>
+<summary>View screenshot</summary>
 
 ![Semver Success](./assests/pass_version.png)
 
 </details>
 
+</td>
+<td width="33%">
+
+**❌ Version Mismatch**
+
 <details>
-<summary>❌ Version Mismatch Detected</summary>
+<summary>View screenshot</summary>
 
 ![Version Error](./assests/version_error.png)
 
 </details>
 
+</td>
+<td width="33%">
+
+**❌ Wrong Runtime**
+
 <details>
-<summary>❌ Wrong Runtime Detected</summary>
+<summary>View screenshot</summary>
 
 ![Runtime Error](./assests/runtime_error.png)
 
 </details>
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -147,7 +205,8 @@ Ensure everyone uses the same Node/Bun version with support for strict versions 
 Stop mixed usage of `npm`, `pnpm`, `yarn`, and `bun` across your team.
 
 <details>
-<summary>❌ Package Manager Mismatch</summary>
+<summary>❌ <b>Package Manager Mismatch Error</b></summary>
+<br>
 
 ![Package Manager Error](./assests/package_manager_error.png)
 
@@ -160,7 +219,8 @@ Stop mixed usage of `npm`, `pnpm`, `yarn`, and `bun` across your team.
 Prevent platform-specific issues before they reach production.
 
 <details>
-<summary>❌ OS Compatibility Error</summary>
+<summary>❌ <b>OS Compatibility Error</b></summary>
+<br>
 
 ![OS Error](./assests/os_error.png)
 
@@ -173,7 +233,8 @@ Prevent platform-specific issues before they reach production.
 Validate required `.env` variables before your application starts.
 
 <details>
-<summary>❌ Missing Environment Variables</summary>
+<summary>❌ <b>Missing Environment Variables</b></summary>
+<br>
 
 ![Env Error](./assests/env_error.png)
 
@@ -188,8 +249,10 @@ Load environment variables from multiple files (e.g., `.env`, `.env.local`) with
 ```yaml
 envFiles:
   - .env
-  - .env.local
+  - .env.local # Values here override .env
 ```
+
+> **Note:** Files are loaded in order, with later files overriding earlier ones.
 
 ---
 
@@ -198,7 +261,8 @@ envFiles:
 Built-in help commands to guide you through setup and usage.
 
 <details>
-<summary>🆘 Help Command Output</summary>
+<summary>🆘 <b>Help Command Output</b></summary>
+<br>
 
 ![Help Command](./assests/help.png)
 
@@ -206,82 +270,11 @@ Built-in help commands to guide you through setup and usage.
 
 ---
 
-## 🤖 CI/CD Integration
+## 🛠️ Configuration
 
-### GitHub Actions
+Parity supports both **JSON** and **YAML** formats for the `.env.lock` file.
 
-Add Parity to your CI pipeline with the `--ci` flag to treat warnings as errors:
-
-```yaml
-name: CI
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Parity checks
-        run: npx parity check --ci
-
-      - name: Run tests
-        run: npm test
-```
-
-### GitLab CI
-
-```yaml
-test:
-  stage: test
-  script:
-    - npm install
-    - npx parity check --ci
-    - npm test
-```
-
-### CircleCI
-
-```yaml
-version: 2.1
-
-jobs:
-  test:
-    docker:
-      - image: cimg/node:18.0
-    steps:
-      - checkout
-      - run: npm install
-      - run: npx parity check --ci
-      - run: npm test
-```
-
----
-
-## 📚 Documentation
-
-| Document                                        | Description                        |
-| ----------------------------------------------- | ---------------------------------- |
-| [📘 Getting Started](./docs/getting-started.md) | Complete setup guide with examples |
-| [⌨️ Command Reference](./docs/commands.md)      | Full CLI command documentation     |
-| [🧪 Testing & Scenarios](./docs/testing.md)     | Test your Parity configuration     |
-| [❓ FAQ & Troubleshooting](./docs/faq.md)       | Common issues and solutions        |
-
----
-
-## 🛠️ Configuration Example
-
-Here's what a `.env.lock` file looks like:
+### **JSON Format**
 
 ```json
 {
@@ -299,17 +292,208 @@ Here's what a `.env.lock` file looks like:
 }
 ```
 
+### **YAML Format**
+
+```yaml
+runtime:
+  name: node
+  version: ^25.2.0
+  manager: npm
+
+os: windows
+
+envFiles:
+  - .env
+  - .env.local
+
+env:
+  DATABASE_URL: required
+  API_KEY: required
+  DEBUG: optional
+```
+
+<details>
+<summary>📋 <b>Configuration Options Reference</b></summary>
+<br>
+
+| Option            | Type              | Description                                       |
+| ----------------- | ----------------- | ------------------------------------------------- |
+| `runtime.name`    | `string`          | Runtime name (`node` or `bun`)                    |
+| `runtime.version` | `string`          | Version constraint (SemVer or exact)              |
+| `packageManager`  | `string`          | Package manager (`npm`, `pnpm`, `yarn`, `bun`)    |
+| `os`              | `string \| array` | Allowed OS platforms (`darwin`, `linux`, `win32`) |
+| `envFiles`        | `array`           | List of env files to load                         |
+| `env`             | `object`          | Required and optional environment variables       |
+
+</details>
+
+---
+
+## 🤖 CI/CD Integration
+
+> **Use the `--ci` flag to treat warnings as errors in CI environments**
+
+### **GitHub Actions**
+
+```yaml
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: ✅ Run Parity checks
+        run: npx parity check --ci
+
+      - name: 🧪 Run tests
+        run: npm test
+```
+
+<details>
+<summary><b>GitLab CI Example</b></summary>
+
+```yaml
+test:
+  stage: test
+  script:
+    - npm install
+    - npx parity check --ci
+    - npm test
+```
+
+</details>
+
+<details>
+<summary><b>CircleCI Example</b></summary>
+
+```yaml
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:18.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run Parity checks
+          command: npx parity check --ci
+      - run:
+          name: Run tests
+          command: npm test
+```
+
+</details>
+
+<details>
+<summary><b>Jenkins Example</b></summary>
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Install') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Parity Check') {
+            steps {
+                sh 'npx parity check --ci'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+    }
+}
+```
+
+</details>
+
+---
+
+## 📚 Documentation
+
+<div align="center">
+
+| Document                                            | Description                        |
+| --------------------------------------------------- | ---------------------------------- |
+| **[📘 Getting Started](./docs/getting-started.md)** | Complete setup guide with examples |
+| **[⌨️ Command Reference](./docs/commands.md)**      | Full CLI command documentation     |
+| **[🧪 Testing & Scenarios](./docs/testing.md)**     | Test your Parity configuration     |
+| **[❓ FAQ & Troubleshooting](./docs/faq.md)**       | Common issues and solutions        |
+
+</div>
+
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions! Here's how you can help:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+<table>
+<tr>
+<td>
+
+### 🐛 Report Bugs
+
+Found a bug? [Open an issue](https://github.com/Pawandasila/parity-cli/issues)
+
+</td>
+<td>
+
+### 💡 Suggest Features
+
+Have an idea? [Start a discussion](https://github.com/Pawandasila/parity-cli/discussions)
+
+</td>
+<td>
+
+### 🔧 Submit PRs
+
+Want to contribute code? Follow our guide →
+
+</td>
+</tr>
+</table>
+
+**Development Setup:**
+
+```bash
+# 1. Fork and clone the repository
+git clone https://github.com/YOUR_USERNAME/parity-cli.git
+
+# 2. Create your feature branch
+git checkout -b feature/AmazingFeature
+
+# 3. Make your changes and commit
+git commit -m 'Add some AmazingFeature'
+
+# 4. Push to your branch
+git push origin feature/AmazingFeature
+
+# 5. Open a Pull Request
+```
 
 ---
 
@@ -321,8 +505,10 @@ MIT © [Pawandasila](https://github.com/Pawandasila)
 
 <div align="center">
 
-**[⬆ back to top](#-parity-cli)**
+### ⭐ If you find Parity helpful, please consider giving it a star!
 
-Made with ❤️ by developers, for developers
+**[⬆ Back to top](#-parity-cli)**
+
+<sub>Made with ❤️ by developers, for developers</sub>
 
 </div>
