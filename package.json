@@ -2,6 +2,10 @@
   "name": "parity-cli",
   "version": "1.0.0",
   "description": "A robust CLI tool to ensure environment consistency and health across your software projects.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pawandasila/parity"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
