@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/Pawandasila/parity"
   },
+  "homepage": "https://github.com/PawanDasila/parity#readme",
+  "bugs": {
+    "url": "https://github.com/PawanDasila/parity/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
