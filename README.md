@@ -6,9 +6,9 @@
 
 ### Stop "It works on my machine" — Enforce environment consistency across your team and CI
 
-[![npm version](https://img.shields.io/npm/v/parity-cli.svg?style=flat-square)](https://www.npmjs.com/package/parity-cli)
+[![npm version](https://img.shields.io/npm/v/parity-ci.svg?style=flat-square)](https://www.npmjs.com/package/parity-ci)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/npm/dm/parity-cli.svg?style=flat-square)](https://www.npmjs.com/package/parity-cli)
+[![Downloads](https://img.shields.io/npm/dm/parity-ci.svg?style=flat-square)](https://www.npmjs.com/package/parity-ci)
 
 [Installation](#-installation) • [Quick Start](#-quick-start) • [Features](#-features) • [Documentation](#-documentation) • [CI/CD](#-cicd-integration)
 
@@ -47,21 +47,21 @@ Choose your preferred package manager:
 <td>
 
 ```bash
-npm install -D parity-cli
+npm install -D parity-ci
 ```
 
 </td>
 <td>
 
 ```bash
-pnpm add -D parity-cli
+pnpm add -D parity-ci
 ```
 
 </td>
 <td>
 
 ```bash
-bun add -d parity-cli
+bun add -d parity-ci
 ```
 
 </td>
