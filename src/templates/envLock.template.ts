@@ -13,6 +13,8 @@ export const getEnvLockTemplate = ({
 
 os: ${os}
 
+# envFiles: ['.env', '.env.local']
+
 env:
   APP_NAME: required
   DEBUG: optional

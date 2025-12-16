@@ -7,9 +7,16 @@ import dotenv from "dotenv";
 export function checkEnv(config: ParityConfig): CheckResult[] {
   const result: CheckResult[] = [];
 
-  const envPath = path.join(process.cwd(), ".env");
-  if (!fs.existsSync(envPath)) {
-    dotenv.config({ path: envPath });
+  const envFiles = config.envFiles ?? [".env"];
+
+  for (const file of envFiles) {
+    const envPath = path.join(process.cwd(), file);
+    if (fs.existsSync(envPath)) {
+      const envConfig = dotenv.parse(fs.readFileSync(envPath));
+      for (const k in envConfig) {
+        process.env[k] = envConfig[k];
+      }
+    }
   }
 
   const envRules = config.env ?? {};

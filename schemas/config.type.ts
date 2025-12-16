@@ -15,6 +15,7 @@ export const ParityConfigSchema = z.object({
   runtime: RuntimeSchema,
   os: OsSchema,
   env: EnvSchema.optional(),
+  envFiles: z.array(z.string()).optional(),
 });
 
 export type ParityConfig = z.infer<typeof ParityConfigSchema>;

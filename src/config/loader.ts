@@ -31,6 +31,7 @@ export async function loadParity(
       runtime: result.runtime,
       os: result.os,
       env: result.env,
+      envFiles: result.envFiles,
     };
   } catch (error) {
     if (error instanceof Error) {
