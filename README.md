@@ -7,6 +7,7 @@ Parity is a tool to ensure environment consistency and health across your softwa
 - [Getting Started](./docs/getting-started.md)
 - [Command Reference](./docs/commands.md)
 - [Architecture](./docs/architecture.md)
+- [Testing Guide](./docs/testing.md)
 - [Contributing](./docs/contributing.md)
 
 ## Quick Start
