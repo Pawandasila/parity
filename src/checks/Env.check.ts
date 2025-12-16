@@ -34,6 +34,7 @@ export function checkEnv(config: ParityConfig): CheckResult[] {
       status: "FAIL",
       message: "Missing required environment variables",
       details: missingRequired.map((v) => `- ${v}`).join("\n"),
+      why: "The application requires these variables to function correctly. Missing them will likely cause a crash at startup.",
     });
   }
 
@@ -44,6 +45,7 @@ export function checkEnv(config: ParityConfig): CheckResult[] {
       message:
         "Missing optional environment variables: " + missingOptional.join(", "),
       details: missingOptional.map((v) => `- ${v}`).join("\n"),
+      why: "These variables are not critical but may disable certain features (e.g., Debugging, Analytics).",
     });
   }
 

@@ -1,24 +1,24 @@
 import type { ParityConfig } from "../../schemas/config.type";
 import type { CheckResult } from "./types";
 
-export function checkRuntime(config: ParityConfig): CheckResult {
-  const expected = config.runtime;
-
-  let actualName: "node" | "bun";
-  let actualVersion: string;
-
-  // Type-safe access to global Bun object
+export function detectRuntime(): {
+  name: "node" | "bun";
+  version: string;
+} {
   const globalEnv = globalThis as typeof globalThis & {
     Bun?: { version: string };
   };
 
   if (globalEnv.Bun) {
-    actualName = "bun";
-    actualVersion = globalEnv.Bun.version;
+    return { name: "bun", version: globalEnv.Bun.version };
   } else {
-    actualName = "node";
-    actualVersion = process.versions.node;
+    return { name: "node", version: process.versions.node };
   }
+}
+
+export function checkRuntime(config: ParityConfig): CheckResult {
+  const expected = config.runtime;
+  const { name: actualName, version: actualVersion } = detectRuntime();
 
   if (actualName !== expected.name) {
     return {
@@ -26,6 +26,7 @@ export function checkRuntime(config: ParityConfig): CheckResult {
       status: "FAIL",
       message: "Runtime name mismatch",
       details: `Expected: ${expected.name}, Actual: ${actualName}`,
+      why: "Different runtimes (Node vs Bun) behave differently with package resolution, streams, and built-in APIs.",
     };
   }
 
@@ -35,6 +36,7 @@ export function checkRuntime(config: ParityConfig): CheckResult {
       status: "FAIL",
       message: "Runtime version mismatch",
       details: `Expected: ${expected.version}, Actual: ${actualVersion}`,
+      why: "Version mismatches can lead to syntax errors (if using new features) or behavior regressions.",
     };
   }
 
