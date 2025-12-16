@@ -181,6 +181,18 @@ Validate required `.env` variables before your application starts.
 
 ---
 
+### 📂 Multiple Env Files
+
+Load environment variables from multiple files (e.g., `.env`, `.env.local`) with automatic overriding.
+
+```yaml
+envFiles:
+  - .env
+  - .env.local
+```
+
+---
+
 ### 📖 Helpful CLI
 
 Built-in help commands to guide you through setup and usage.
@@ -279,6 +291,7 @@ Here's what a `.env.lock` file looks like:
   },
   "packageManager": "pnpm",
   "os": ["darwin", "linux"],
+  "envFiles": [".env", ".env.local"],
   "env": {
     "required": ["DATABASE_URL", "API_KEY"],
     "optional": ["DEBUG"]
