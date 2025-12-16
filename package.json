@@ -49,6 +49,7 @@
     "@types/bun": "latest",
     "@types/node": "^25.0.2",
     "@types/semver": "^7.7.1",
+    "parity-ci": "^1.0.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
