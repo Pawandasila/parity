@@ -27,13 +27,20 @@ export function checkOs(config: ParityConfig): CheckResult {
     };
   }
 
-  if (expected !== actual) {
-    logger.error(`OS Mismatch: Expected ${expected}, got ${actual}`);
+  const matches = Array.isArray(expected)
+    ? expected.includes(actual)
+    : expected === actual;
+
+  if (!matches) {
+    const expectedStr = Array.isArray(expected)
+      ? expected.join(" or ")
+      : expected;
+    logger.error(`OS Mismatch: Expected ${expectedStr}, got ${actual}`);
     return {
       name: "OS",
       status: "FAIL",
       message: "Operating system mismatch",
-      details: `Expected: ${expected}, Actual: ${actual}`,
+      details: `Expected: ${expectedStr}, Actual: ${actual}`,
       why: "Native modules and scripts often rely on specific OS commands or binaries. Running on the wrong OS can cause build failures or unexpected runtime behavior.",
     };
   }

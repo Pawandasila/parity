@@ -13,7 +13,7 @@ export const OsSchema = z.enum(["windows", "linux", "macos", "unknown", "any"]);
 
 export const ParityConfigSchema = z.object({
   runtime: RuntimeSchema,
-  os: OsSchema,
+  os: z.union([OsSchema, z.array(OsSchema)]),
   env: EnvSchema.optional(),
   envFiles: z.array(z.string()).optional(),
 });
