@@ -11,11 +11,11 @@ const CONFIG_FILE = ".env.lock";
 
 export async function loadParity(
   cwd: string = process.cwd()
-): Promise<ParityConfig | null> {
+): Promise<ParityConfig | "missing" | "invalid"> {
   const configPath = path.join(cwd, CONFIG_FILE);
 
   if (!fs.existsSync(configPath)) {
-    return null;
+    return "missing";
   }
 
   try {
@@ -38,6 +38,6 @@ export async function loadParity(
     } else {
       logger.error(`Failed to load ${CONFIG_FILE}: ${String(error)}`);
     }
-    return null;
+    return "invalid";
   }
 }

@@ -9,6 +9,7 @@ export const getEnvLockTemplate = ({
 }) => `runtime:
   name: ${runtime}
   version: ${version}
+  manager: npm # optional: npm, pnpm, yarn, bun
 
 os: ${os}
 

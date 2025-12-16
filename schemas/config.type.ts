@@ -3,6 +3,8 @@ import { z } from "zod";
 export const RuntimeSchema = z.object({
   name: z.enum(["node", "bun"]),
   version: z.string().min(1, "Version is required"),
+  manager: z.enum(["npm", "pnpm", "yarn", "bun"]).optional(),
+  managerVersion: z.string().optional(),
 });
 
 export const EnvSchema = z.record(z.string(), z.enum(["required", "optional"]));

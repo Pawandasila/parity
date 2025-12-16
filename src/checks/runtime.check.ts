@@ -1,5 +1,6 @@
 import type { ParityConfig } from "../../schemas/config.type";
 import type { CheckResult } from "./types";
+import semver from "semver";
 
 export function detectRuntime(): {
   name: "node" | "bun";
@@ -26,11 +27,21 @@ export function checkRuntime(config: ParityConfig): CheckResult {
       status: "FAIL",
       message: "Runtime name mismatch",
       details: `Expected: ${expected.name}, Actual: ${actualName}`,
-      why: "Different runtimes (Node vs Bun) behave differently with package resolution, streams, and built-in APIs.",
+      why: `Different runtimes (${expected.name} vs ${actualName}) behave differently with package resolution, streams, and built-in APIs.`,
     };
   }
 
-  if (actualVersion !== expected.version) {
+  if (!semver.validRange(expected.version)) {
+    return {
+      name: "Runtime",
+      status: "FAIL",
+      message: "Invalid SemVer range in configuration",
+      details: `Configured version: "${expected.version}" is not a valid SemVer range.`,
+      why: "The version specified in .env.lock must be a valid semantic version range (e.g., '>=18.0.0', '^20.0.0').",
+    };
+  }
+
+  if (!semver.satisfies(actualVersion, expected.version)) {
     return {
       name: "Runtime",
       status: "FAIL",
@@ -43,6 +54,6 @@ export function checkRuntime(config: ParityConfig): CheckResult {
   return {
     name: "Runtime",
     status: "PASS",
-    message: "Runtime check passed ✔",
+    message: `Runtime check passed (${actualName} ${actualVersion} satisfies ${expected.version}) ✔`,
   };
 }

@@ -1,6 +1,8 @@
 import type { CheckResult } from "../checks/types";
 
-export function enforceResults(results: CheckResult[], isCli: boolean) {
+import { logger } from "../chalk/chalk.config.js";
+
+export function enforceResults(results: CheckResult[], isCi: boolean) {
   let shouldFail = false;
 
   for (const check of results) {
@@ -8,16 +10,13 @@ export function enforceResults(results: CheckResult[], isCli: boolean) {
       shouldFail = true;
     }
 
-    if (isCli && check.status === "WARN") {
+    if (isCi && check.status === "WARN") {
       shouldFail = true;
     }
   }
 
   if (shouldFail) {
-    if (isCli) {
-      process.exit(1);
-    } else {
-      throw new Error("Parity check failed");
-    }
+    logger.error("❌ Checks failed");
+    process.exit(1);
   }
 }
