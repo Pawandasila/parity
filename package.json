@@ -1,19 +1,38 @@
 {
-  "name": "parity",
-  "module": "index.ts",
+  "name": "parity-cli",
+  "version": "1.0.0",
+  "description": "A robust CLI tool to ensure environment consistency and health across your software projects.",
   "type": "module",
-  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
     "parity": "bin/parity.js"
   },
+  "files": [
+    "dist",
+    "bin",
+    "docs",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --clean --dts",
     "dev": "tsup src/index.ts --watch --onSuccess \"node dist/index.js\"",
     "start": "node dist/index.js",
     "test": "vitest run",
     "lint": "tsc --noEmit",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
+  "keywords": [
+    "cli",
+    "environment",
+    "check",
+    "consistency",
+    "dev-tool",
+    "parity"
+  ],
+  "author": "Pawandasila",
+  "license": "MIT",
   "devDependencies": {
     "@types/bun": "latest",
     "@types/node": "^25.0.2",
