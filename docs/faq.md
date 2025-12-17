@@ -23,6 +23,14 @@ Check the `expected` version in .env.lock and compare it with your current versi
 
 It means `.env.lock` does not specify a `manager` field. You can add one (e.g., `manager: npm`) to ensure everyone uses the same tool.
 
+### My password has a `#`, will it break?
+
+No. Parity's `fix` command automatically quotes values (e.g., `PASS="foo#bar"`). `dotenv` handles quoted strings correctly, preserving the `#` as part of the value instead of a comment.
+
+### Can I use variables inside variables?
+
+Yes! Parity supports expansion. `URL=http://${HOST}` will resolve correctly if `HOST` is defined in your environment.
+
 ### CI checks failed but local passed?
 
 CI mode (`--ci`) is stricter than local mode. Warnings (like missing optional env vars) cause failures in CI to prevent issues from sliding into production.

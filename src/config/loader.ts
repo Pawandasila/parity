@@ -32,6 +32,7 @@ export async function loadParity(
       os: result.os,
       env: result.env,
       envFiles: result.envFiles,
+      custom: result.custom,
     };
   } catch (error) {
     if (error instanceof Error) {

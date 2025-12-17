@@ -6,11 +6,10 @@ Parity is built with a modular structure to support extensible checks and fixes.
 
 - `bin/`: CLI entry point.
 - `src/`: Source code.
-  - `commands/`: CLI command implementations (e.g., `check.ts`).
+  - `commands/`: CLI command implementations (e.g., `check.ts`, `fix.ts`, `start.ts`).
   - `checks/`: Logic for individual consistency checks.
-  - `fixes/`: Auto-fix implementations for failed checks.
   - `config/`: Configuration loading and validation.
-  - `utils/`: Shared utilities.
+  - `utils/`: Shared utilities (including the centralized check runner).
   - `ci/`: CI-specific logic and integration.
   - `explain/`: Logic for explaining failures to users.
 - `schemas/`: Validation schemas (e.g., Zod schemas).

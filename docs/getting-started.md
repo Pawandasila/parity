@@ -34,6 +34,22 @@ Or with `npx` if installed locally:
 npx parity check
 ```
 
+### Fix Issues Interactively
+
+If variables are missing, fix them automatically:
+
+```bash
+npx parity fix
+```
+
+### Protect Your Startup (Recommended)
+
+Wrap your start command to ensure consistency every time:
+
+```bash
+npx parity start npm run dev
+```
+
 ## CI Mode
 
 For Continuous Integration environments, use the `--ci` flag for strict checking:

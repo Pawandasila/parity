@@ -40,15 +40,19 @@ Generate a `.env.lock` file based on your current machine:
 npx parity init
 ```
 
-### 3. Run
+### 3. Run It
 
-Add to your `package.json` scripts:
+**Option A: Check manually**
 
-```json
-"scripts": {
-  "postinstall": "parity check",
-  "dev": "parity check && next dev"
-}
+```bash
+npx parity check
+```
+
+**Option B: Protect your start command (Recommended)**
+Wrap your start script so checks run automatically before your app starts.
+
+```bash
+npx parity start npm run dev
 ```
 
 ---
@@ -110,6 +114,32 @@ Ensure everyone uses the same Node/Bun version.
 </details>
 
 <details>
+<summary><b>🛠️ Interactive Fix</b></summary>
+<br>
+Run `parity fix` to automatically find missing variables and prompt you to enter them.
+
+```bash
+npx parity fix
+```
+
+> [!TIP] > **Special Characters:** Parity automatically quotes your input to safely handle characters like `#` or spaces. Enter **only** the value (do not add your own quotes or inline comments).
+
+</details>
+
+<details>
+<summary><b>🧩 Custom Shell Checks</b></summary>
+<br>
+Run any shell command as a check.
+ 
+```yaml
+custom:
+  - name: "Docker Check"
+    command: "docker info"
+    error: "Docker is not running!"
+```
+</details>
+
+<details>
 <summary><b>📦 Package Manager Integrity</b></summary>
 <br>
 Stop mixed usage of npm/pnpm/bun.
@@ -119,9 +149,12 @@ Stop mixed usage of npm/pnpm/bun.
 </details>
 
 <details>
-<summary><b>🔐 Environment Validation</b></summary>
+<summary><b>🔐 Environment Validation & Expansion</b></summary>
 <br>
-Validate required variables exist before app start.
+Validate required variables exist before app start. 
+<br><br>
+<b>✅ Supports Variable Expansion</b><br>
+Variables like `URL=http://${HOST}/api` are automatically resolved.
 
 ![Env Error](./assests/env_error.png)
 

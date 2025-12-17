@@ -50,6 +50,9 @@ Verify that critical configuration is present.
 - **Scenario B (Optional Warning)**
   - **Setup:** Change it to `SECRET_KEY: optional`.
   - **Result:** **WARN** (Missing optional variable).
+- **Scenario C (Variable Expansion)**
+  - **Setup:** `BASE_URL=http://${HOST}/api`. Ensure `HOST` is defined.
+  - **Result:** **PASS**. App receives expanded value (e.g. `http://localhost/api`).
 
 ## 6. CI Mode Enforcement
 
@@ -67,3 +70,20 @@ Test strict validation (zero-tolerance policy).
 - **Setup:** Rename `.env.lock` to `.env.lock.bak`.
 - **Action:** Run `parity check`.
 - **Result:** **FAIL** (Config not found).
+
+## 8. Custom Checks
+
+- **Setup:** Add a custom check to `.env.lock`:
+  ```yaml
+  custom:
+    - name: "Fail Test"
+      command: "exit 1"
+  ```
+- **Action:** Run `parity check`.
+- **Result:** **FAIL** (Command failed).
+
+## 9. Interactive Fix
+
+- **Setup:** Remove a required variable from `.env`.
+- **Action:** Run `parity fix`.
+- **Result:** Prompt appears. Enter value. Variable is added to `.env`.

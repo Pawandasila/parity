@@ -4,19 +4,31 @@ import type { ParityConfig } from "../../schemas/config.type";
 import type { CheckResult } from "./types";
 import dotenv from "dotenv";
 
+import { expand } from "dotenv-expand";
+
 export function checkEnv(config: ParityConfig): CheckResult[] {
   const result: CheckResult[] = [];
 
   const envFiles = config.envFiles ?? [".env"];
 
+  // Accumulate all env configs first to support overrides (Last Wins)
+  const combinedConfig: Record<string, string> = {};
+
   for (const file of envFiles) {
     const envPath = path.join(process.cwd(), file);
     if (fs.existsSync(envPath)) {
-      const envConfig = dotenv.parse(fs.readFileSync(envPath));
-      for (const k in envConfig) {
-        process.env[k] = envConfig[k];
-      }
+      const parsed = dotenv.parse(fs.readFileSync(envPath));
+      Object.assign(combinedConfig, parsed);
     }
+  }
+
+  const expanded = expand({
+    parsed: combinedConfig,
+    ignoreProcessEnv: true,
+  } as any).parsed;
+
+  if (expanded) {
+    Object.assign(process.env, expanded);
   }
 
   const envRules = config.env ?? {};
